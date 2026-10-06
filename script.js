@@ -159,8 +159,8 @@
   async function getCustomMusic(){ const files=await getAllFiles(); return files.find(x=>x.id==='music-custom') || null; }
   async function loadMusic(){
     const custom=await getCustomMusic(); musicCustom=custom;
-    if(custom?.blob){ if(musicUrl)URL.revokeObjectURL(musicUrl);musicUrl=URL.createObjectURL(custom.blob);audio.src=musicUrl;setMusicInfo(custom.name||"Lagu pilihan kita","Lagu yang kamu pilih dari perangkat ini."); }
-    else{audio.src=K.musikDefault?.file||"assets/music/our-story-original.mp3";setMusicInfo(K.musikDefault?.judul||"Our Story — Original Instrumental",K.musikDefault?.info||"Instrumental lembut untuk menemani cerita kita.");}
+  if(custom?.blob){ if(musicUrl)URL.revokeObjectURL(musicUrl);musicUrl=URL.createObjectURL(custom.blob);audio.src=musicUrl;setMusicInfo(custom.name||"Lagu pilihan kita","Lagu yang kamu pilih dari perangkat ini."); }
+else{audio.src="assets/music/My Heart (Lirik) ~Acha & Irwansyah.mp3";setMusicInfo("My Heart (Lirik) ~Acha & Irwansyah","Lagu yang menemani cerita Ramadhan dan Ila.");}
   }
   function syncMusicUI(){byId("musicBtn").classList.toggle("playing",musicPlaying);byId("musicLabel").textContent=musicPlaying?"Music on":"Music off";byId("musicCardBtn").innerHTML=musicPlaying?'Jeda lagu <span>❚❚</span>':'Putar lagu <span>♪</span>';}
   async function startMusic(){try{if(!audio.src)await loadMusic();await audio.play();musicPlaying=true;syncMusicUI();}catch{musicPlaying=false;syncMusicUI();}}
