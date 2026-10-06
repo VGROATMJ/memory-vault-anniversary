@@ -1,0 +1,50 @@
+OUR LITTLE UNIVERSE — VERSI ROMANTIS
+
+1. Buka index.html
+2. Masukkan kode: 07102022
+3. Tekan Mulai cerita
+4. Musik original akan mulai menemani halaman
+
+FITUR BARU
+- Tampilan lebih romantis: velvet red + champagne gold
+- Animasi heart particles, orbit, glow, dan cinematic transition
+- Foto-foto kenangan kita sudah dimasukkan
+- 2 video silent sudah dimasukkan
+- Bisa hapus/tambah foto sendiri
+- Bisa hapus/tambah video sendiri
+- Bisa pindah urutan dengan drag & drop atau tombol ↑ ↓
+- Bisa ganti lagu sendiri
+- Surat dibuka lewat animasi amplop
+- Countdown hubungan tetap berjalan live
+
+CARA EDIT MEDIA
+- Tekan tombol ✦ di kanan atas, atau tombol Kelola foto
+- Pilih tab Foto / Video / Musik
+- Tambah, hapus, atau geser urutan
+- Tekan ✂ pada foto untuk crop / zoom / geser framing / rotasi
+- Tekan ↔ pada dua foto untuk menukar posisi keduanya
+- Perubahan tersimpan otomatis di browser yang dipakai
+
+CATATAN
+Perubahan lewat editor browser tidak menulis ulang file ZIP. Jadi media awal tetap aman.
+Kalau mau mengganti nama dan teks permanen, edit config.js.
+
+=== UPGRADE PREMIUM ===
+- Galeri sekarang memakai gaya masonry agar portrait dan landscape tersebar lebih natural.
+- Ada random memory untuk membuka foto acak.
+- Ada favorit untuk menandai foto penting.
+- Ada pembuat kolase 6 foto acak.
+- Lightbox punya tombol sebelumnya/berikutnya + keyboard panah.
+- Ada countdown menuju anniversary berikutnya.
+- Floating action dock untuk akses cepat.
+- Tombol suasana mengubah mode dark romantic <-> champagne daylight.
+- Asset foto di assets/foto sudah dioptimalkan kualitas tinggi dari originals/foto.
+
+UPDATE MULTI-PAGE
+- Nama sudah diset menjadi Ramadhan Tri Atmojo dan Ila Meydina.
+- Klik Story / Foto / Video / Message sekarang membuka scene berbeda, bukan sekadar scroll.
+- Message punya halaman khusus untuk surat dan penutup.
+- Tombol amplop tetap membuka surat setelah masuk ke halaman Message.
+- Tombol ✉ pada floating dock juga langsung masuk ke Message.
+- Hash URL memakai #story, #photos, #videos, dan #message sehingga halaman bisa dibuka langsung pada scene tertentu setelah akses dibuka.
+

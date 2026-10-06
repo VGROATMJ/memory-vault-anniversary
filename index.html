@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="id">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ramadhan ♡ Ila — 07.10.2022</title>
+  <meta name="theme-color" content="#16080f">
+  <meta name="robots" content="noindex, nofollow">
+  <meta name="description" content="Ruang kecil Ramadhan Tri Atmojo dan Ila Meydina untuk menyimpan empat tahun cerita.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;1,400;1,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="premium.css">
+</head>
+<body>
+  <canvas id="stars" aria-hidden="true"></canvas>
+  <div class="ambient ambient-a" aria-hidden="true"></div>
+  <div class="ambient ambient-b" aria-hidden="true"></div>
+  <div class="petal-layer" aria-hidden="true"></div>
+
+  <audio id="bgMusic" loop preload="auto"></audio>
+
+  <section id="lock" class="lock-screen">
+    <div class="lock-topline"><span>PRIVATE LOVE ARCHIVE</span><span>07 / 10 / 2022</span></div>
+    <div class="lock-center">
+      <div class="heart-seal"><span>♡</span><i></i></div>
+      <p class="script-label">Untuk satu orang yang paling ingin aku temui di halaman ini.</p>
+      <h1>Ada satu tanggal<br><em>yang harus kamu ingat.</em></h1>
+      <p class="lock-desc">Masukkan tanggal jadian kita · DDMMYYYY</p>
+
+      <div id="codeDots" class="code-dots" aria-label="Kode tanggal"></div>
+      <input id="codeInput" class="code-input" inputmode="numeric" maxlength="8" autocomplete="off" aria-label="Masukkan kode tanggal" autofocus>
+
+      <div class="keypad" aria-label="Papan angka">
+        <button data-key="1">1</button><button data-key="2">2</button><button data-key="3">3</button>
+        <button data-key="4">4</button><button data-key="5">5</button><button data-key="6">6</button>
+        <button data-key="7">7</button><button data-key="8">8</button><button data-key="9">9</button>
+        <button class="ghost" data-action="clear">C</button><button data-key="0">0</button><button class="ghost" data-action="back">⌫</button>
+      </div>
+
+      <button id="unlockBtn" class="primary-btn" type="button">Buka untukku <span>♡</span></button>
+      <p id="lockStatus" class="lock-status">Ruang ini hanya terbuka dengan tanggal kita.</p>
+    </div>
+    <div class="lock-footer"><span>MADE WITH TOO MANY MEMORIES</span><span>07.10.2022 → ∞</span></div>
+  </section>
+
+  <section id="access" class="access-screen" hidden>
+    <div class="access-stars"></div>
+    <div class="access-card">
+      <span class="micro">ACCESS GRANTED</span>
+      <div class="access-heart">♡</div>
+      <p>tanggalnya benar.</p>
+      <h2>Berarti kamu siap<br><em>masuk ke cerita kita.</em></h2>
+      <div class="access-line"><span>07 OKT 2022</span><i></i><span>07 OKT 2026</span></div>
+      <button id="enterVault" class="primary-btn">Mulai cerita <span>→</span></button>
+      <small>musik akan mulai saat kamu masuk</small>
+    </div>
+  </section>
+
+  <main id="app" hidden>
+    <header class="topbar">
+      <div class="brand"><span class="brand-heart">♡</span><span><small>RAMADHAN × ILA</small><b>07.10.2022</b></span></div>
+      <nav aria-label="Navigasi utama"><a href="#story" data-route="story">Story</a><a href="#photos" data-route="photos">Foto</a><a href="#videos" data-route="videos">Video</a><a href="#message" data-route="message">Message</a></nav>
+      <div class="top-actions"><button id="musicBtn" class="music-chip" type="button" aria-label="Putar atau jeda musik"><span class="music-icon">♪</span><span id="musicLabel">Music on</span></button><button id="manageBtn" class="icon-btn" type="button" title="Kelola media">✦</button></div>
+    </header>
+
+    <section class="hero-section" id="love-story" data-page="story">
+      <div class="hero-rings" aria-hidden="true"><span></span><span></span><span></span></div>
+      <div class="hero-copy-wrap">
+        <p class="eyebrow"><span></span> THIS PAGE IS FOR YOU</p>
+        <h1>empat tahun,<br><em>dan aku masih</em><br>jatuh di tempat yang sama.</h1>
+        <p class="hero-copy">Aku nggak tahu cara paling sempurna buat merayakannya. Jadi aku bikin ruang kecil ini—isinya foto, video, surat, dan sedikit bukti kalau selama empat tahun ini aku masih betah sama kamu.</p><div class="cute-pills"><span>Rama ♡ Ila</span><span>still choosing you</span><span>peringatan: bikin senyum sendiri</span></div>
+        <div class="hero-meta"><span>07.10.2022</span><i></i><span>07.10.2026</span></div>
+        <a href="#opening" class="scroll-cue">pelan-pelan ya <span>↓</span></a>
+      </div>
+      <div class="hero-note-card"><span>NO. 04</span><strong>STILL<br>YOU.</strong><small>and somehow, it still feels new.</small><div class="hero-note-mini">STATUS: <b>masih sayang</b> · STREAK: <b>4 tahun</b></div></div>
+    </section>
+
+    <section id="opening" class="section opening-section" data-page="story">
+      <div class="opening-quote"><span class="quote-mark">“</span><p id="openingText"></p><span class="quote-mark end">”</span></div>
+      <div class="opening-sign"><span>untuk</span><strong id="openingName">Sayang</strong></div>
+    </section>
+
+    <section id="timeline" class="section stats-section" data-page="story">
+      <div class="section-mini"><span>TIME TOGETHER</span><span>LIVE</span></div>
+      <div class="stats-main"><h2><span id="yearsText">4 tahun</span> yang masih berjalan.</h2><p>Dan bagian paling kusuka? Ceritanya belum selesai.</p></div>
+      <div class="time-grid"><div><b id="days">—</b><span>hari</span></div><div><b id="hours">—</b><span>jam</span></div><div><b id="minutes">—</b><span>menit</span></div><div><b id="seconds">—</b><span>detik</span></div></div>
+    </section>
+
+    <section class="section chapter-section" data-page="story">
+      <div class="section-head"><div><span class="eyebrow">OUR STORY / 04 CHAPTERS</span><h2>Empat fase, satu cerita yang sama-sama kita pilih.</h2></div></div>
+      <div id="chapters" class="chapter-stack"></div>
+    </section>
+
+    <section id="moments" class="section media-section" data-page="photos">
+      <div class="media-head">
+        <div><span class="eyebrow">OUR MEMORY ALBUM <i class="eyebrow-sigil" aria-hidden="true">⟡ ୨୧ ⟡</i><span id="photoCount" hidden>98</span></span><h2>Foto-foto kenangan kita. Yang pernah sederhana, yang pernah heboh, yang sekarang jadi alasan buat senyum lagi.</h2></div>
+        <button id="manageGalleryBtn" class="soft-btn" type="button">✦ Kelola foto</button>
+      </div>
+      <div class="filter-row"><button class="filter active" data-filter="all">Semua</button><button class="filter" data-filter="portrait">Portrait</button><button class="filter" data-filter="landscape">Landscape</button><span class="filter-hint">Tarik urutan di mode kelola ✦</span></div>
+      <div id="photoGrid" class="photo-grid"></div>
+    </section>
+
+    <section id="films" class="section film-section" data-page="videos">
+      <div class="section-head"><div><span class="eyebrow">LITTLE FILMS / <b id="videoCount">02</b> CLIPS</span><h2>Ada beberapa momen yang lebih enak ditonton daripada dijelaskan.</h2></div><span class="section-code">SILENT CUTS</span></div>
+      <div id="videoGrid" class="video-grid"></div>
+    </section>
+
+    <section class="section music-section" data-page="videos">
+      <div class="music-card">
+        <div class="vinyl"><div class="vinyl-hole"></div><span>♡</span></div>
+        <div class="music-info"><span class="eyebrow">SOUNDTRACK OF US</span><h2 id="musicTitle">Our Story — Original Instrumental</h2><p id="musicInfo">Instrumental lembut yang aku taruh di sini khusus buat menemani cerita kita.</p><div class="music-progress"><i id="musicProgress"></i></div><div class="music-actions"><button id="musicCardBtn" class="primary-btn">Putar lagu <span>♪</span></button><label class="soft-btn file-btn">Pakai lagu sendiri<input id="musicUpload" type="file" accept="audio/*"></label></div></div>
+      </div>
+    </section>
+
+    <section class="section reasons-section" data-page="story">
+      <div class="section-head"><div><span class="eyebrow">8 SMALL REASONS</span><h2>Alasan-alasan kecil kenapa aku masih suka kamu.</h2></div></div>
+      <div class="reason-card"><div class="reason-index" id="reasonIndex">01 / 08</div><p id="reasonText">Ada satu alasan yang mungkin sudah kamu tahu. Tapi tetap ingin aku bilang lagi.</p><button id="reasonBtn" class="line-btn">Baca alasan pertama <span>→</span></button></div>
+    </section>
+
+    <section id="letter" class="section letter-section" data-page="message">
+      <div class="letter-intro"><span class="eyebrow">MESSAGE / FROM MY HEART</span><h2>Yang paling sulit ternyata bukan membuat halaman ini.</h2><p>Tapi memilih kata-kata yang cukup untuk bilang kalau aku benar-benar sayang. Dan iya, Ila, kamu memang penerima surat ini. Jangan pura-pura salah alamat. ♡</p></div>
+      <div class="letter-wrap">
+        <button id="envelopeButton" class="envelope" type="button" aria-label="Buka pesan"><div class="envelope-flap"></div><div class="envelope-paper"><span>untuk kamu</span><strong>♡</strong></div></button>
+        <div class="letter-frame" id="letterFrame">
+          <div class="letter-top"><span>TO: <b id="letterTo">SAYANG</b></span><span>07.10.2026</span></div>
+          <div id="letterText" class="letter-body"></div>
+          <div class="letter-sign"><span id="letterSign">Dengan sayang,</span><strong id="signName">Rama</strong></div>
+        </div>
+      </div>
+      <p class="tap-note">tekan amplopnya untuk membuka surat</p>
+    </section>
+
+    <section class="final-section" data-page="message">
+      <div class="final-orbit" aria-hidden="true"><span></span><span></span></div>
+      <span class="eyebrow">ONE MORE THING</span>
+      <h2>Kalau boleh mengulang,<br><em>aku tetap pilih tanggal itu.</em></h2>
+      <p>Karena ternyata, dari satu tanggal itu, aku dapat seseorang yang sampai hari ini masih ingin aku ajak pulang ke cerita yang sama.</p>
+      <button id="finalBtn" class="primary-btn">Simpan satu janji lagi <span>♡</span></button>
+      <div id="finalMessage" class="final-message" hidden></div>
+    </section>
+
+    <footer class="footer"><span>MADE FOR TWO</span><span>07.10.2022 → ∞</span></footer>
+  </main>
+
+  <div id="lightbox" class="lightbox" hidden><button id="lightboxClose" aria-label="Tutup">×</button><img id="lightboxImg" alt="Foto kenangan"><div id="lightboxCaption"></div></div>
+
+  <div id="manager" class="modal" hidden>
+    <div class="modal-backdrop"></div>
+    <div class="manager-panel" role="dialog" aria-modal="true" aria-labelledby="managerTitle">
+      <div class="manager-head"><div><span class="eyebrow">PRIVATE EDITOR</span><h2 id="managerTitle">Atur isi galeri</h2><p>Hapus, tambah, atau geser urutan foto/video sesukamu. Perubahan tersimpan di browser ini.</p></div><button id="managerClose" class="close-btn" type="button">×</button></div>
+      <div class="manager-tabs"><button class="manager-tab active" data-manage-tab="photos">Foto</button><button class="manager-tab" data-manage-tab="videos">Video</button><button class="manager-tab" data-manage-tab="music">Musik</button></div>
+      <div id="managerPhotos" class="manager-body"></div>
+      <div id="managerVideos" class="manager-body" hidden></div>
+      <div id="managerMusic" class="manager-body" hidden>
+        <div class="music-manager-card"><div class="manager-icon">♪</div><div><h3>Soundtrack kita</h3><p>Ganti musik dengan MP3/M4A/WAV milikmu. File disimpan lokal di browser.</p></div><label class="primary-btn file-btn">Pilih lagu<input id="managerMusicUpload" type="file" accept="audio/*"></label></div>
+      </div>
+      <div class="manager-foot"><button id="resetMedia" class="danger-btn" type="button">Reset ke media awal</button><span id="managerStatus">Perubahan otomatis tersimpan.</span><button id="managerDone" class="primary-btn" type="button">Selesai <span>✓</span></button></div>
+    </div>
+  </div>
+
+  <input id="photoUpload" type="file" accept="image/*" multiple hidden>
+  <input id="videoUpload" type="file" accept="video/*" multiple hidden>
+
+  <script src="config.js"></script>
+  <script src="script.js"></script>
+  <script src="premium.js"></script>
+</body>
+</html>
