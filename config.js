@@ -153,8 +153,8 @@ window.KONFIG = {
   ],
 
   musikDefault: {
-    file: "assets/music/our-story-original.mp3",
-    judul: "Our Story — Original Instrumental",
-    info: "instrumental lembut untuk menemani halaman ini"
-  }
+  file: "assets/music/My Heart (Lirik) ~Acha & Irwansyah.mp3",
+  judul: "My Heart (Lirik) ~Acha & Irwansyah",
+  info: "Lagu yang menemani cerita Ramadhan dan Ila."
+}
 };
