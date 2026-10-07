@@ -57,3 +57,12 @@ UPDATE MULTI-PAGE
 - Lock screen: hati melayang, petunjuk kode, getar kalau salah
 - Lightbox HP: geser ganti foto, ketuk 2x untuk favorit
 - Semua fitur lama (edit foto, kelola media, dll) tidak diubah
+
+=== FINISHING RONDE 2 (finale2.css + finale2.js) ===
+- Kupon cinta (ketuk untuk membuka), tombol tahan untuk kirim peluk
+- Stiker lucu melayang, coretan tulisan tangan, pita washi di foto
+- Confetti hati, Si Hati pakai pita + bisa ngantuk/kangen kalau didiamkan
+
+=== FINISHING RONDE 3 (finale3.css + finale3.js) ===
+- Jemuran kenangan: polaroid bergantung di tali, bisa digeser
+- Kita dalam angka (versi lebay), kartu gombalan, game Tangkap hati (halaman Video)

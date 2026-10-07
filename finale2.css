@@ -1,0 +1,91 @@
+/* ============================================================
+   FINALE 2 — ronde kedua: lebih lucu, lebih hangat
+   Stiker, kupon cinta, kirim peluk, pita washi, confetti hati.
+   ============================================================ */
+
+/* ---------- Stiker melayang ---------- */
+.hero-section,.final-section{position:relative}
+.fx-stickers{position:absolute;inset:0;pointer-events:none;z-index:1;overflow:hidden}
+.fx-sticker{position:absolute;width:var(--w,54px);height:var(--w,54px);filter:drop-shadow(0 8px 12px rgba(0,0,0,.35));animation:fxSway var(--d,6s) ease-in-out infinite;animation-delay:var(--dl,0s);transform-origin:50% 80%}
+.fx-sticker svg{width:100%;height:100%;overflow:visible}
+@keyframes fxSway{0%,100%{transform:rotate(calc(var(--r,0deg) - 6deg)) translateY(0)}50%{transform:rotate(calc(var(--r,0deg) + 6deg)) translateY(-8px)}}
+
+/* ---------- Coretan tulisan tangan ---------- */
+.fx-doodle{display:flex;align-items:center;gap:10px;margin:14px 0 0;font:600 22px/1.1 var(--fx-hand);color:var(--fx-gold);transform:rotate(-1.5deg)}
+.fx-doodle svg{width:54px;height:30px;flex:none;stroke:var(--fx-gold);fill:none;stroke-width:2.2;stroke-linecap:round;stroke-linejoin:round}
+.fx-doodle svg path{stroke-dasharray:140;stroke-dashoffset:140;animation:fxDraw 1.6s .6s ease-out forwards}
+@keyframes fxDraw{to{stroke-dashoffset:0}}
+
+/* ---------- Foto: pita washi + miring tipis ---------- */
+.photo-card{rotate:var(--tilt,0deg)}
+.photo-card::before{content:"";position:absolute;left:50%;top:7px;width:58px;height:17px;translate:-50% 0;rotate:var(--tape-r,-3deg);background:var(--tape,rgba(255,176,196,.62));border-inline:1px dashed rgba(255,255,255,.55);box-shadow:0 2px 5px rgba(0,0,0,.2);z-index:6;pointer-events:none;border-radius:2px;opacity:0;transition:opacity .4s}
+.photo-card.fx-taped::before{opacity:.95}
+.photo-card:nth-child(3n).fx-taped::before{--tape:rgba(255,225,150,.62);--tape-r:4deg}
+.photo-card:nth-child(3n+1).fx-taped::before{--tape:rgba(190,225,255,.55)}
+@media (hover:hover){.photo-card:hover{rotate:0deg}}
+
+/* ---------- Kupon cinta ---------- */
+.fx-coupons{padding:26px 18px 8px;max-width:760px;margin:0 auto}
+.fx-coupons h3{margin:0;font:500 clamp(26px,7vw,36px)/1.1 "Playfair Display",Georgia,serif;color:#fff4ef}
+.fx-coupons>p{margin:6px 0 18px;font:500 20px/1.2 var(--fx-hand);color:var(--fx-gold)}
+.fx-coupon-grid{display:grid;grid-template-columns:1fr;gap:16px}
+@media(min-width:640px){.fx-coupon-grid{grid-template-columns:1fr 1fr}}
+.fx-coupon{position:relative;display:block;width:100%;min-height:104px;padding:0;border:0;background:none;text-align:left;cursor:pointer;perspective:900px;color:inherit;font:inherit}
+.fx-coupon-in{position:relative;display:grid;grid-template-columns:86px 1fr;min-height:104px;border-radius:18px;transition:transform .7s cubic-bezier(.3,1.2,.4,1);transform-style:preserve-3d}
+.fx-coupon.open .fx-coupon-in{transform:rotateX(360deg)}
+.fx-coupon-stub{display:grid;place-items:center;background:linear-gradient(150deg,#b8415d,#e58aa0);border-radius:18px 0 0 18px;color:#fff4ef;font:600 34px/1 var(--fx-hand);position:relative;text-align:center}
+.fx-coupon-stub::after{content:"";position:absolute;right:-1px;top:8px;bottom:8px;border-right:3px dotted rgba(255,244,239,.75)}
+.fx-coupon-body{padding:14px 16px;background:linear-gradient(150deg,#fff0e4,#ffdfd2);color:var(--fx-ink);border-radius:0 18px 18px 0;display:flex;flex-direction:column;justify-content:center;gap:4px;position:relative;overflow:hidden}
+.fx-coupon-body::before,.fx-coupon-body::after{content:"";position:absolute;left:-9px;width:18px;height:18px;border-radius:50%;background:#1c0c15}
+.fx-coupon-body::before{top:-9px}.fx-coupon-body::after{bottom:-9px}
+.fx-coupon-title{font:600 22px/1.15 var(--fx-hand)}
+.fx-coupon-sub{font:500 12.5px/1.35 "Manrope",system-ui,sans-serif;opacity:.78}
+.fx-coupon-tag{position:absolute;right:10px;top:8px;font:600 15px/1 var(--fx-hand);color:#b8415d;transform:rotate(6deg)}
+.fx-coupon:not(.open) .fx-coupon-sub{filter:blur(5px);user-select:none}
+.fx-coupon:not(.open) .fx-coupon-tag{opacity:0}
+.fx-coupon.open .fx-coupon-tag{animation:fxStamp .5s .3s both}
+@keyframes fxStamp{from{opacity:0;transform:rotate(-20deg) scale(2.4)}to{opacity:1;transform:rotate(6deg) scale(1)}}
+.fx-coupon-hint{display:block;margin-top:12px;font:500 19px/1 var(--fx-hand);color:rgba(255,226,232,.75);text-align:center}
+
+/* ---------- Kirim peluk (tahan tombol) ---------- */
+.fx-hug{padding:20px 18px 6px;display:grid;place-items:center;text-align:center}
+.fx-hug h3{margin:0 0 4px;font:500 clamp(24px,6.5vw,32px)/1.1 "Playfair Display",Georgia,serif;color:#fff4ef}
+.fx-hug p{margin:0 0 18px;font:500 19px/1.2 var(--fx-hand);color:var(--fx-gold)}
+.fx-hug-btn{position:relative;width:132px;height:132px;border-radius:50%;border:0;background:radial-gradient(circle at 35% 30%,#ffb3c4,#e5607f 60%,#a82c4b);color:#fff;cursor:pointer;display:grid;place-items:center;box-shadow:0 18px 40px rgba(168,44,75,.5),inset 0 -6px 12px rgba(100,10,40,.4);-webkit-user-select:none;user-select:none;touch-action:none;transition:transform .2s}
+.fx-hug-btn::before{content:"";position:absolute;inset:-9px;border-radius:50%;background:conic-gradient(var(--fx-gold) calc(var(--p,0)*1%),rgba(255,255,255,.12) 0)}
+.fx-hug-btn::after{content:"";position:absolute;inset:-3px;border-radius:50%;background:#1c0c15}
+.fx-hug-core{position:absolute;inset:0;border-radius:50%;background:inherit;display:grid;place-items:center;z-index:2;font:600 17px/1.1 var(--fx-hand)}
+.fx-hug-core b{display:block;font-size:44px;line-height:1;animation:heartbeat 1.6s infinite}
+.fx-hug-btn.hold{transform:scale(.93)}
+.fx-hug-btn.done .fx-hug-core b{animation:fxSquish .7s}
+.fx-hug-note{min-height:28px;margin-top:20px;font:600 22px/1.15 var(--fx-hand);color:#ffd9e2}
+
+/* ---------- Confetti hati ---------- */
+.fx-confetti{position:fixed;top:-20px;z-index:1000;pointer-events:none;will-change:transform;animation:fxFall linear forwards}
+@keyframes fxFall{to{transform:translate3d(var(--cx,0),108vh,0) rotate(var(--cr,360deg))}}
+
+/* ---------- Si Hati: pita & ngantuk ---------- */
+.fx-buddy .bow{transform-origin:32px 10px}
+.fx-buddy.sleepy .eye{animation:none;transform:scaleY(.18)}
+.fx-buddy.sleepy::after{content:"z z";position:absolute;right:-6px;top:-8px;font:600 15px var(--fx-hand);color:#ffd9e2;animation:fxZ 2.4s infinite}
+@keyframes fxZ{0%{opacity:0;transform:translateY(6px)}40%{opacity:1}100%{opacity:0;transform:translateY(-12px)}}
+
+/* ---------- Kartu & tombol: sedikit lebih manis ---------- */
+.primary-btn{box-shadow:0 10px 26px rgba(184,65,93,.38)}
+.hero-copy-wrap h1 em{display:inline-block}
+.cute-pills span:nth-child(1){background:rgba(229,138,160,.2)}
+.cute-pills span:nth-child(2){background:rgba(235,198,143,.16)}
+.cute-pills span:nth-child(3){background:rgba(190,160,255,.14)}
+
+body.soft-theme .fx-coupon-body::before,body.soft-theme .fx-coupon-body::after,body.soft-theme .fx-hug-btn::after{background:#fff4ec}
+body.soft-theme .fx-coupons h3,body.soft-theme .fx-hug h3{color:#4a2535}
+
+@media (max-width:760px){
+  .fx-sticker{--w:42px}
+  .fx-doodle{font-size:20px}
+}
+@media (prefers-reduced-motion:reduce){
+  .fx-sticker,.fx-doodle svg path,.fx-hug-core b{animation:none!important}
+  .fx-doodle svg path{stroke-dashoffset:0}
+  .fx-confetti{display:none}
+}
