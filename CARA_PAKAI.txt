@@ -48,3 +48,12 @@ UPDATE MULTI-PAGE
 - Tombol ✉ pada floating dock juga langsung masuk ke Message.
 - Hash URL memakai #story, #photos, #videos, dan #message sehingga halaman bisa dibuka langsung pada scene tertentu setelah akses dibuka.
 
+
+=== FINISHING TAMBAHAN (finale.css + finale.js) ===
+- Tab bar bawah (Story/Foto/Video/Pesan) khusus HP, tidak lagi tersembunyi di Android
+- Perbaikan layar melebar ke samping, safe-area, dan performa di Android
+- Si Hati: maskot hati yang bisa diketuk dan menyapa
+- Pita berjalan, Love meter, sticky note P.S., segel lilin di amplop
+- Lock screen: hati melayang, petunjuk kode, getar kalau salah
+- Lightbox HP: geser ganti foto, ketuk 2x untuk favorit
+- Semua fitur lama (edit foto, kelola media, dll) tidak diubah

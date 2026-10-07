@@ -1,0 +1,206 @@
+/* ============================================================
+   FINALE LAYER — polish tambahan (tidak mengubah fitur lama)
+   Fokus: tampilan HP Android, tab bawah, Si Hati, pita, love meter.
+   ============================================================ */
+:root{
+  --fx-safe-b:env(safe-area-inset-bottom,0px);
+  --fx-safe-t:env(safe-area-inset-top,0px);
+  --fx-tab-h:62px;
+  --fx-hand:"Caveat","Segoe Print","Bradley Hand","Comic Sans MS",cursive;
+  --fx-rose:#e58aa0;
+  --fx-gold:#ebc68f;
+  --fx-ink:#3a1624;
+}
+
+/* ---------- Android / mobile robustness ---------- */
+html{overflow-x:hidden;overflow-x:clip;-webkit-text-size-adjust:100%;text-size-adjust:100%}
+body{overflow-x:hidden;overflow-x:clip;-webkit-tap-highlight-color:transparent;overscroll-behavior-y:none}
+#app{overflow-x:hidden;overflow-x:clip;max-width:100vw}
+button,a,.photo-card,.keypad button,.filter,.memory-tool{touch-action:manipulation}
+img{-webkit-user-drag:none}
+.topbar{padding-top:max(11px,var(--fx-safe-t))}
+.lock-screen,.access-screen{min-height:100vh;min-height:100dvh}
+.lock-screen{padding-bottom:max(16px,var(--fx-safe-b))}
+
+/* dock & tab bar hanya muncul setelah masuk */
+body:not(.fx-in) .action-dock,
+body:not(.fx-in) .fx-tabbar,
+body:not(.fx-in) .fx-buddy{display:none!important}
+
+/* ---------- Lock screen: hati melayang + petunjuk ---------- */
+.fx-lock-hearts{position:absolute;inset:0;pointer-events:none;overflow:hidden;z-index:0}
+.fx-lock-hearts i{position:absolute;bottom:-30px;font-style:normal;color:var(--fx-rose);opacity:0;animation:fxRise linear infinite}
+@keyframes fxRise{0%{transform:translateY(0) translateX(0) scale(.7) rotate(-8deg);opacity:0}12%{opacity:.5}80%{opacity:.25}100%{transform:translateY(-105vh) translateX(var(--sx,20px)) scale(1.1) rotate(12deg);opacity:0}}
+.lock-center,.lock-topline,.lock-footer{position:relative;z-index:1}
+.fx-hint-btn{margin-top:10px;background:none;border:0;color:var(--fx-gold);font:600 17px/1 var(--fx-hand);letter-spacing:.02em;padding:10px 14px;cursor:pointer;opacity:.9}
+.fx-hint-text{max-width:300px;margin:2px auto 0;font:500 19px/1.25 var(--fx-hand);color:#ffd9e2;min-height:0;opacity:0;transform:translateY(-4px);transition:.4s}
+.fx-hint-text.show{opacity:1;transform:none;min-height:48px}
+.lock-center.fx-shake{animation:fxShake .5s}
+@keyframes fxShake{0%,100%{transform:translateX(0)}20%{transform:translateX(-9px)}40%{transform:translateX(8px)}60%{transform:translateX(-6px)}80%{transform:translateX(4px)}}
+.keypad button{-webkit-user-select:none;user-select:none;transition:transform .12s,background .2s}
+.keypad button:active{transform:scale(.9);background:rgba(229,138,160,.28)}
+@media (max-height:720px){.fx-hint-text.show{min-height:0}}
+
+/* ---------- Tap hearts ---------- */
+.fx-tap{position:fixed;z-index:999;pointer-events:none;font-size:18px;line-height:1;color:var(--fx-rose);text-shadow:0 0 12px rgba(229,138,160,.6);transform:translate(-50%,-50%);animation:fxTap 1s ease-out forwards;will-change:transform,opacity}
+@keyframes fxTap{0%{opacity:0;transform:translate(-50%,-50%) scale(.4)}15%{opacity:1}100%{opacity:0;transform:translate(calc(-50% + var(--dx,0px)),calc(-50% - 70px)) scale(1.25) rotate(var(--rot,0deg))}}
+
+/* ---------- Pita berjalan (ticker) ---------- */
+.fx-ticker{position:relative;overflow:hidden;padding:26px 0;margin:0;max-width:100vw}
+.fx-ticker-band{display:flex;width:max-content;transform:rotate(-1.6deg) scale(1.04);background:linear-gradient(100deg,#8c2f49,#c9566f 45%,#e7c08b);box-shadow:0 12px 40px rgba(0,0,0,.4);border-block:1px dashed rgba(255,244,239,.5);animation:fxTicker 38s linear infinite}
+.fx-ticker-band span{display:inline-flex;align-items:center;gap:18px;padding:13px 0 13px 18px;white-space:nowrap;font:600 21px/1 var(--fx-hand);letter-spacing:.04em;color:#fff4ef}
+.fx-ticker-band span::after{content:"♡";font-size:15px;color:#ffe3ea;margin-left:0}
+.fx-ticker-band b{font-weight:600}
+@keyframes fxTicker{to{transform:rotate(-1.6deg) scale(1.04) translateX(-50%)}}
+.fx-ticker:hover .fx-ticker-band{animation-play-state:paused}
+
+/* ---------- Love meter ---------- */
+.fx-meter-sec{padding:20px 20px 10px}
+.fx-meter{position:relative;max-width:760px;margin:0 auto;padding:26px 24px 24px;border-radius:30px;background:linear-gradient(150deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,238,240,.12);box-shadow:0 26px 70px rgba(0,0,0,.28),inset 0 1px rgba(255,255,255,.08);overflow:hidden}
+.fx-meter::before{content:"♡";position:absolute;right:-18px;top:-30px;font-size:130px;color:rgba(229,138,160,.09);transform:rotate(14deg);pointer-events:none}
+.fx-meter h3{margin:0 0 4px;font:500 clamp(24px,6vw,32px)/1.1 "Playfair Display",Georgia,serif;color:#fff4ef}
+.fx-meter-note{margin:0 0 18px;font:500 19px/1.2 var(--fx-hand);color:var(--fx-gold)}
+.fx-meter-track{position:relative;height:26px;border-radius:999px;background:rgba(0,0,0,.35);border:1px solid rgba(255,238,240,.14);overflow:hidden}
+.fx-meter-fill{position:absolute;inset:0 auto 0 0;width:0;border-radius:inherit;background:repeating-linear-gradient(115deg,rgba(255,255,255,.18) 0 10px,transparent 10px 20px),linear-gradient(90deg,#b8415d,#e58aa0,#ebc68f);background-size:40px 100%,100% 100%;animation:fxStripe 1.6s linear infinite;transition:width 1.6s cubic-bezier(.2,.8,.2,1)}
+@keyframes fxStripe{to{background-position:40px 0,0 0}}
+.fx-meter-read{display:flex;justify-content:space-between;align-items:baseline;margin-top:12px;gap:12px}
+.fx-meter-read b{font:500 clamp(30px,9vw,42px)/1 "Playfair Display",Georgia,serif;color:#fff4ef}
+.fx-meter-read span{font:500 19px/1.2 var(--fx-hand);color:#ffd9e2;text-align:right}
+.fx-meter-btn{margin-top:16px}
+
+/* ---------- Sticky note + P.S. ---------- */
+.fx-ps-wrap{padding:6px 20px 30px;display:flex;justify-content:center}
+.fx-ps{position:relative;width:min(320px,86vw);padding:28px 24px 24px;background:linear-gradient(160deg,#fff0a8,#ffe08a);color:var(--fx-ink);border-radius:4px 4px 22px 4px;transform:rotate(-2.4deg);box-shadow:0 22px 45px rgba(0,0,0,.4);font:600 23px/1.2 var(--fx-hand)}
+.fx-ps::before{content:"";position:absolute;left:50%;top:-13px;width:92px;height:28px;transform:translateX(-50%) rotate(2deg);background:rgba(255,170,190,.7);border-inline:1px dashed rgba(255,255,255,.7);box-shadow:0 2px 6px rgba(0,0,0,.18)}
+.fx-ps small{display:block;margin-top:12px;font:600 18px/1 var(--fx-hand);text-align:right;color:#8b3350}
+.fx-ps-heart{position:absolute;right:12px;bottom:10px;font-size:20px;color:#d2506f;animation:heartbeat 2.2s infinite}
+
+/* ---------- Segel lilin di amplop ---------- */
+.fx-seal{position:absolute;left:50%;top:56%;z-index:6;width:clamp(42px,12vw,56px);aspect-ratio:1;display:grid;place-items:center;transform:translate(-50%,-50%);border-radius:50%;background:radial-gradient(circle at 35% 30%,#f08aa1,#b5304f 60%,#7c1d36);box-shadow:0 6px 14px rgba(0,0,0,.45),inset 0 -3px 6px rgba(70,5,25,.5),inset 0 2px 3px rgba(255,255,255,.35);color:#ffe8ee;font:600 clamp(10px,3vw,13px)/1 "Playfair Display",Georgia,serif;letter-spacing:.02em;transition:.6s cubic-bezier(.2,.8,.2,1);pointer-events:none}
+.fx-seal::after{content:"";position:absolute;inset:5px;border-radius:50%;border:1px dashed rgba(255,232,238,.55)}
+.envelope.open .fx-seal,.envelope.flipped .fx-seal{opacity:0;transform:translate(-50%,-90%) scale(.6) rotate(25deg)}
+.envelope:not(.open) .fx-seal{animation:fxSealPulse 2.6s ease-in-out infinite}
+@keyframes fxSealPulse{0%,100%{box-shadow:0 6px 14px rgba(0,0,0,.45),0 0 0 0 rgba(229,138,160,.5),inset 0 -3px 6px rgba(70,5,25,.5)}50%{box-shadow:0 6px 14px rgba(0,0,0,.45),0 0 0 12px rgba(229,138,160,0),inset 0 -3px 6px rgba(70,5,25,.5)}}
+
+/* ---------- Si Hati (maskot) ---------- */
+.fx-buddy{position:fixed;left:max(12px,env(safe-area-inset-left,0px));bottom:calc(var(--fx-tab-h) + var(--fx-safe-b) + 28px);z-index:72;width:62px;height:62px;padding:0;border:0;background:none;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.fx-buddy svg{width:100%;height:100%;overflow:visible;filter:drop-shadow(0 8px 14px rgba(0,0,0,.45));animation:fxBob 3.4s ease-in-out infinite;transform-origin:50% 90%}
+.fx-buddy.squish svg{animation:fxSquish .55s}
+.fx-buddy .eye{transform-box:fill-box;transform-origin:center;animation:fxBlink 4.6s infinite}
+.fx-buddy.happy .mouth-a{display:none}.fx-buddy:not(.happy) .mouth-b{display:none}
+@keyframes fxBob{0%,100%{transform:translateY(0) rotate(-3deg)}50%{transform:translateY(-7px) rotate(3deg)}}
+@keyframes fxSquish{0%{transform:scale(1)}25%{transform:scale(1.22,.78)}55%{transform:scale(.88,1.18) translateY(-12px)}100%{transform:scale(1)}}
+@keyframes fxBlink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.fx-bubble{position:absolute;left:44px;bottom:66px;width:max-content;max-width:min(236px,64vw);padding:11px 14px 12px;border-radius:18px 18px 18px 4px;background:#fff4ef;color:var(--fx-ink);font:600 19px/1.15 var(--fx-hand);box-shadow:0 14px 30px rgba(0,0,0,.4);opacity:0;transform:translateY(8px) scale(.9);transform-origin:0 100%;pointer-events:none;transition:.35s cubic-bezier(.2,.9,.3,1.3);text-align:left}
+.fx-bubble.show{opacity:1;transform:none}
+.fx-bubble::after{content:"";position:absolute;left:8px;bottom:-7px;width:14px;height:14px;background:inherit;transform:rotate(45deg);border-radius:0 0 4px 0;z-index:-1}
+
+/* ---------- Tab bar bawah (HP) ---------- */
+.fx-tabbar{display:none}
+@media (max-width:900px){
+  body.fx-in{padding-bottom:calc(var(--fx-tab-h) + var(--fx-safe-b) + 30px)}
+  .fx-tabbar{position:fixed;z-index:80;left:max(12px,env(safe-area-inset-left,0px));right:max(12px,env(safe-area-inset-right,0px));bottom:calc(10px + var(--fx-safe-b));height:var(--fx-tab-h);display:grid;grid-template-columns:repeat(4,1fr);padding:6px;border-radius:26px;background:rgba(24,9,16,.82);border:1px solid rgba(255,226,232,.16);box-shadow:0 18px 44px rgba(0,0,0,.55),inset 0 1px rgba(255,255,255,.08);backdrop-filter:blur(16px) saturate(140%);-webkit-backdrop-filter:blur(16px) saturate(140%)}
+  .fx-tab-pill{position:absolute;top:6px;bottom:6px;left:6px;width:calc((100% - 12px)/4);border-radius:20px;background:linear-gradient(145deg,rgba(229,138,160,.34),rgba(235,198,143,.2));border:1px solid rgba(255,226,232,.2);transition:transform .45s cubic-bezier(.3,1.3,.5,1);pointer-events:none}
+  .fx-tab{position:relative;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;border:0;background:none;color:rgba(255,244,239,.62);font:600 11px/1 "Manrope",system-ui,sans-serif;letter-spacing:.02em;cursor:pointer;border-radius:20px;transition:color .25s}
+  .fx-tab svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;transition:transform .4s cubic-bezier(.3,1.5,.5,1)}
+  .fx-tab.active{color:#fff4ef}
+  .fx-tab.active svg{transform:translateY(-2px) scale(1.12);stroke:#ffc9d6}
+  .fx-tab.active[data-go="story"] svg{fill:rgba(229,138,160,.45)}
+
+  /* dock jadi kolom kecil di kanan atas tab bar */
+  .action-dock{right:max(12px,env(safe-area-inset-right,0px))!important;bottom:calc(var(--fx-tab-h) + var(--fx-safe-b) + 24px)!important;flex-direction:column;gap:6px;padding:6px;transition:transform .35s,opacity .35s}
+  .action-dock button{width:40px;height:40px}
+  .action-dock.fx-hide{transform:translateX(70px);opacity:0;pointer-events:none}
+}
+@media (min-width:901px){.fx-buddy{bottom:24px;width:70px;height:70px}}
+
+/* ---------- Rapi di layar kecil ---------- */
+@media (max-width:760px){
+  /* ringankan GPU di Android */
+  body::before{display:none!important}
+  body::after{box-shadow:inset 0 0 50px rgba(0,0,0,.3)!important}
+  .petal:nth-child(n+8){display:none}
+  .topbar{backdrop-filter:blur(12px)!important;-webkit-backdrop-filter:blur(12px)!important}
+  .symbol-field{display:none}
+
+  /* header halaman lebih ringkas */
+  .route-head .route-stamp,.route-sigils{display:none!important}
+  .route-head .route-title-wrap h2{font-size:clamp(26px,8vw,32px)!important}
+  .route-head .route-title-wrap p{font-size:13px!important}
+
+  /* judul besar yang kepanjangan */
+  .media-head h2,.section-head h2,.letter-intro h2,.stats-main h2{font-size:clamp(25px,7.4vw,32px)!important;line-height:1.14!important}
+  .section{padding:44px 16px!important}
+  .opening-section{padding-top:34px!important}
+
+  /* hero */
+  .hero-section{padding:56px 18px 36px!important;min-height:0!important}
+  .hero-copy-wrap h1{font-size:clamp(36px,11.4vw,50px)!important;line-height:1.02!important}
+  .hero-copy{font-size:14px!important;line-height:1.6!important}
+  .hero-note-card{position:relative!important;right:auto!important;bottom:auto!important;left:auto!important;margin:14px 0 0 auto!important;opacity:1!important;width:150px!important;min-height:0!important}
+  .hero-rings{display:none}
+  .cute-pills span{font-size:12px}
+
+  /* galeri 2 kolom (lebih ringkas dari 1 kolom) */
+  .photo-grid{column-count:2!important;column-gap:9px!important}
+  .photo-card{margin-bottom:9px!important;border-radius:18px!important}
+  .photo-fav{width:36px!important;height:36px!important}
+  .memory-tools{gap:8px}
+  .memory-tool{flex:1 1 calc(50% - 8px);justify-content:center;min-height:44px}
+  .memory-tools .filter-hint{display:none}
+  .filter-row{overflow-x:auto;flex-wrap:nowrap;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:4px}
+  .filter-row::-webkit-scrollbar{display:none}
+  .filter{white-space:nowrap;min-height:40px}
+
+  /* video: tinggi aman */
+  .video-grid video{max-height:70svh}
+
+  /* lightbox */
+  .lightbox{padding:14px 10px calc(14px + var(--fx-safe-b))}
+  .lightbox img{max-width:96vw!important;max-height:76svh!important}
+  .lb-nav{top:auto!important;bottom:calc(22px + var(--fx-safe-b));transform:none!important;width:46px;height:46px}
+  .lb-prev{left:18px!important}.lb-next{right:18px!important}
+  .lb-fav{top:max(16px,var(--fx-safe-t))!important;right:16px!important}
+  .lb-count{top:calc(max(16px,var(--fx-safe-t)) + 14px)!important;left:18px!important}
+  #lightboxCaption{padding-inline:70px;text-align:center}
+  .fx-lb-hint{position:absolute;left:0;right:0;bottom:calc(30px + var(--fx-safe-b));text-align:center;font:500 17px/1 var(--fx-hand);color:rgba(255,226,232,.7);pointer-events:none;animation:fxHintOut 5s forwards}
+
+  /* modal editor muat di layar HP */
+  .manager-panel{max-height:94svh!important}
+  .fx-tabbar{}
+}
+@keyframes fxHintOut{0%,70%{opacity:1}100%{opacity:0}}
+.fx-lb-heart{position:absolute;left:50%;top:50%;font-size:96px;color:#ff8fab;transform:translate(-50%,-50%) scale(.3);opacity:0;pointer-events:none;text-shadow:0 0 40px rgba(255,120,160,.7);z-index:30}
+.fx-lb-heart.pop{animation:fxPop .8s ease-out}
+@keyframes fxPop{0%{opacity:0;transform:translate(-50%,-50%) scale(.3)}30%{opacity:1;transform:translate(-50%,-50%) scale(1.15)}100%{opacity:0;transform:translate(-50%,-70%) scale(1)}}
+
+@media (max-width:380px){
+  .fx-tab{font-size:10px}
+  .fx-ticker-band span{font-size:19px}
+  .keypad{grid-template-columns:repeat(3,56px)!important}
+}
+@media (max-width:760px) and (min-height:760px){
+  .keypad{grid-template-columns:repeat(3,64px)!important;gap:10px!important}
+  .keypad button{height:52px!important;font-size:21px}
+}
+
+/* ---------- Mode champagne daylight ---------- */
+body.soft-theme .fx-tabbar{background:rgba(255,247,243,.88);border-color:rgba(84,44,59,.14)}
+body.soft-theme .fx-tab{color:rgba(87,55,68,.62)}
+body.soft-theme .fx-tab.active{color:#573744}
+body.soft-theme .fx-tab.active svg{stroke:#c0486b}
+body.soft-theme .fx-meter{background:rgba(255,255,255,.7);border-color:rgba(84,44,59,.12)}
+body.soft-theme .fx-meter h3,body.soft-theme .fx-meter-read b{color:#4a2535}
+body.soft-theme .fx-meter-note{color:#a8683a}
+body.soft-theme .fx-meter-read span{color:#a04560}
+body.soft-theme .fx-bubble{background:#fff;box-shadow:0 12px 28px rgba(84,44,59,.25)}
+
+@media (prefers-reduced-motion:reduce){
+  .fx-ticker-band,.fx-lock-hearts i,.fx-buddy svg,.fx-buddy .eye,.fx-meter-fill,.envelope .fx-seal{animation:none!important}
+  .fx-tap{display:none}
+}
+
+/* tampil hanya di halaman yang sesuai (router lama tidak tahu elemen baru) */
+#app:not([data-route="story"]) [data-fx="story"],
+#app:not([data-route="message"]) [data-fx="message"]{display:none!important}
+.fx-bubble{font-size:17px}
